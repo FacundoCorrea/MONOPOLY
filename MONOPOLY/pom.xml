@@ -3,11 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>obligatorio.dda.2016</groupId>
-  <artifactId>MONOPOLY</artifactId>
+  <artifactId>monopoly</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <packaging>jar</packaging>
+  <packaging>pom</packaging>
 
-  <name>MONOPOLY</name>
+  <name>monopoly</name>
   <url>http://maven.apache.org</url>
 
   <properties>
@@ -22,4 +22,9 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+  <modules>
+  	<module>server</module>
+  	<module>common</module>
+  	<module>gui-app</module>
+  </modules>
 </project>
