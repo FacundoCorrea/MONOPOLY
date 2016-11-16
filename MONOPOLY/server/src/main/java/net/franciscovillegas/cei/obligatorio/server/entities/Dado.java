@@ -12,7 +12,7 @@ public class Dado {
 	public int getValor2() {
 		return valor2;
 	}
-	public void setValor2(int valor2) {
+	public void setValor2(int Valor2) {
 		valor2 = Valor2;
 	}
 	public Dado(int Valor1, int Valor2) {
