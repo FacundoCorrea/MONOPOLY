@@ -1,41 +1,29 @@
 package net.franciscovillegas.cei.obligatorio.server.entities;
 
-public class Carta {
-	private String tipo;
-	private String descripcion;
-	private int monto;
-	private int estado;
-	public String getTipo() {
-		return tipo;
-	}
-	public void setTipo(String Tipo) {
-		tipo = Tipo;
-	}
-	public String getDescripcion() {
-		return descripcion;
-	}
-	public void setDescripcion(String Descripcion) {
-		descripcion = Descripcion;
-	}
-	public int getMonto() {
-		return monto;
-	}
-	public void setMonto(int Monto) {
-		monto = Monto;
-	}
-	public int getEstado() {
-		return estado;
-	}
-	public void setEstado(int Estado) {
-		estado = Estado;
-	}
-	public Carta(String pTipo, String pDescripcion, int pMonto, int pEstado) {
+import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
-		this.tipo = pTipo;
-		this.descripcion = pDescripcion;
-		this.monto = pMonto;
-		this.estado = pEstado;
-	}
+@Entity
+@Table(name = "cartas")
+public class carta {
+	private String Tipo;
+	private String Descripcion;
+	private int Monto;
+	private int Estado;
 
+	public carta(String tipo, String descripcion, int monto, int estado) {
+		super();
+		Tipo = tipo;
+		Descripcion = descripcion;
+		Monto = monto;
+		Estado = estado;
+	}
 
 }
