@@ -1,40 +1,40 @@
 package net.franciscovillegas.cei.obligatorio.server.entities;
 
 public class Carta {
-	private String Tipo;
-	private String Descripcion;
-	private int Monto;
-	private int Estado;
+	private String tipo;
+	private String descripcion;
+	private int monto;
+	private int estado;
 	public String getTipo() {
-		return Tipo;
+		return tipo;
 	}
-	public void setTipo(String tipo) {
-		Tipo = tipo;
+	public void setTipo(String Tipo) {
+		tipo = Tipo;
 	}
 	public String getDescripcion() {
-		return Descripcion;
+		return descripcion;
 	}
-	public void setDescripcion(String descripcion) {
-		Descripcion = descripcion;
+	public void setDescripcion(String Descripcion) {
+		descripcion = Descripcion;
 	}
 	public int getMonto() {
-		return Monto;
+		return monto;
 	}
-	public void setMonto(int monto) {
-		Monto = monto;
+	public void setMonto(int Monto) {
+		monto = Monto;
 	}
 	public int getEstado() {
-		return Estado;
+		return estado;
 	}
-	public void setEstado(int estado) {
-		Estado = estado;
+	public void setEstado(int Estado) {
+		estado = Estado;
 	}
 	public Carta(String pTipo, String pDescripcion, int pMonto, int pEstado) {
 
-		this.Tipo = pTipo;
-		this.Descripcion = pDescripcion;
-		this.Monto = pMonto;
-		this.Estado = pEstado;
+		this.tipo = pTipo;
+		this.descripcion = pDescripcion;
+		this.monto = pMonto;
+		this.estado = pEstado;
 	}
 
 
