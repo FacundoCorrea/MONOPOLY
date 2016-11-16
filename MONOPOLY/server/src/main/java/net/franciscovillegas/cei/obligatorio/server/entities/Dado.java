@@ -1,24 +1,24 @@
 package net.franciscovillegas.cei.obligatorio.server.entities;
 
 public class Dado {
-	private int Valor1;
-	private int Valor2;
+	private int valor1;
+	private int valor2;
 	public int getValor1() {
-		return Valor1;
+		return valor1;
 	}
-	public void setValor1(int valor1) {
-		Valor1 = valor1;
+	public void setValor1(int Valor1) {
+		valor1 = Valor1;
 	}
 	public int getValor2() {
-		return Valor2;
+		return valor2;
 	}
 	public void setValor2(int valor2) {
-		Valor2 = valor2;
+		valor2 = Valor2;
 	}
-	public Dado(int valor1, int valor2) {
+	public Dado(int Valor1, int Valor2) {
 
-		Valor1 = valor1;
-		Valor2 = valor2;
+		valor1 = Valor1;
+		valor2 = Valor2;
 	}
 	
 }
