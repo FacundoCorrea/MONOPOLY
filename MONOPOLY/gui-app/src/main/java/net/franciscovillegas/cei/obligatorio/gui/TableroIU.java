@@ -8,14 +8,20 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import javax.swing.SpringLayout;
+
+import net.franciscovillegas.cei.obligatorio.common.Server;
+
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
 public class TableroIU {
 
 	private JFrame frame;
+	private Server server;
+	private DefaultListModel<String> listModel;
 
 	/**
 	 * Launch the application.
@@ -236,5 +242,12 @@ public class TableroIU {
 		springLayout.putConstraint(SpringLayout.EAST, lblPregunta, -64, SpringLayout.WEST, panel_15);
 		frame.getContentPane().add(lblPregunta);
 		
+	}
+	
+	public void addMessage(String messaje) {
+		listModel.addElement(messaje);
+	}
+	public void setServer(Server server) {
+		this.server = server;
 	}
 }

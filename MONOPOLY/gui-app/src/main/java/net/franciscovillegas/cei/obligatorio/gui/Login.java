@@ -3,10 +3,13 @@ package net.franciscovillegas.cei.obligatorio.gui;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+
+import net.franciscovillegas.cei.obligatorio.common.Server;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 
 public class Login {
@@ -15,6 +18,8 @@ public class Login {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JButton btnEntrar;
+	private Server server;
+	private DefaultListModel<String> listModel;
 
 	/**
 	 * Launch the application.
@@ -70,4 +75,11 @@ public class Login {
 		panel.add(btnEntrar);
 	}
 
+	public void addMessage(String messaje) {
+		listModel.addElement(messaje);
+	}
+
+	public void setServer(Server server) {
+		this.server = server;
+	}
 }

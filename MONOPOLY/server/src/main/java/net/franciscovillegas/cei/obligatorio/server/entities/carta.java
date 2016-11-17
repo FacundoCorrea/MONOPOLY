@@ -12,13 +12,13 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "cartas")
-public class carta {
+public class Carta {
 	private String Tipo;
 	private String Descripcion;
 	private int Monto;
 	private int Estado;
 
-	public carta(String tipo, String descripcion, int monto, int estado) {
+	public Carta(String tipo, String descripcion, int monto, int estado) {
 		super();
 		Tipo = tipo;
 		Descripcion = descripcion;

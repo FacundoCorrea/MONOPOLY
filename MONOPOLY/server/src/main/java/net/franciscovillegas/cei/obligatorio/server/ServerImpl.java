@@ -32,8 +32,11 @@ public class ServerImpl implements Server {
 	}
 
 	public void sendMessage(String message) throws RemoteException {
+		
+		// esta en common TODO hacer
+		MensajeJugadorCambioCasilla mensaje = new MensajeJugadorCambioCasilla();
 		for(Observer o : this.observers) {
-			o.notify(message);
+			o.notifyMensajeJugadorCambioCasilla(mensaje);
 		}
 	}
 	

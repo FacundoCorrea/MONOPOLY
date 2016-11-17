@@ -27,6 +27,74 @@ public class Jugador implements Serializable{
 	private int posicion;
 	private String usuario;
 	private String contraseña;
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getGanadas() {
+		return ganadas;
+	}
+
+	public void setGanadas(int ganadas) {
+		this.ganadas = ganadas;
+	}
+
+	public int getPerdidas() {
+		return perdidas;
+	}
+
+	public void setPerdidas(int perdidas) {
+		this.perdidas = perdidas;
+	}
+
+	public int getCartaCarcel() {
+		return cartaCarcel;
+	}
+
+	public void setCartaCarcel(int cartaCarcel) {
+		this.cartaCarcel = cartaCarcel;
+	}
+
+	public int getPosicion() {
+		return posicion;
+	}
+
+	public void setPosicion(int posicion) {
+		this.posicion = posicion;
+	}
+
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+
+	public String getContraseña() {
+		return contraseña;
+	}
+
+	public void setContraseña(String contraseña) {
+		this.contraseña = contraseña;
+	}
+
+	public int getDinero() {
+		return dinero;
+	}
+
+	public void setDinero(int dinero) {
+		this.dinero = dinero;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	private int dinero;
 	
 	public Jugador(int id, int ganadas, int perdidas, int cartaCarcel, int posicion, String usuario, String contraseña,
