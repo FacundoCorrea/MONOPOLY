@@ -41,4 +41,6 @@ public class Jugador implements Serializable{
 		this.contraseña = contraseña;
 		this.dinero = dinero;
 	}
+	
+	public Jugador(){}
 }
