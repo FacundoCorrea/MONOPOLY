@@ -11,6 +11,8 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Login {
 
@@ -72,6 +74,13 @@ public class Login {
 		textField_1.setColumns(10);
 		
 		btnEntrar = new JButton("Entrar");
+		btnEntrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String usuario = textField.getText();
+				String contraseña = textField_1.getText();
+				
+			}
+		});
 		panel.add(btnEntrar);
 	}
 

@@ -7,6 +7,7 @@ import java.util.List;
 
 import net.franciscovillegas.cei.obligatorio.common.Observer;
 import net.franciscovillegas.cei.obligatorio.common.Server;
+import net.franciscovillegas.cei.obligatorio.common.MensajeJugadorCambioCasilla;;
 
 public class ServerImpl implements Server {
 
@@ -14,7 +15,7 @@ public class ServerImpl implements Server {
 	
 	@SuppressWarnings("deprecation")
 	public ServerImpl() {
-		System.setProperty("java.security.policy","file:///Users/fvillegas/projects/cei/java.policy");
+		System.setProperty("java.security.policy","file://C:/java.policy");
 
 		if (System.getSecurityManager() == null) {
 			System.setSecurityManager(new RMISecurityManager());
@@ -34,10 +35,22 @@ public class ServerImpl implements Server {
 	public void sendMessage(String message) throws RemoteException {
 		
 		// esta en common TODO hacer
-		MensajeJugadorCambioCasilla mensaje = new MensajeJugadorCambioCasilla();
+		MensajeJugadorCambioCasilla mensaje = new MensajeJugadorCambioCasilla(message);
 		for(Observer o : this.observers) {
-			o.notifyMensajeJugadorCambioCasilla(mensaje);
+			o.notify(message);
 		}
 	}
+	
+	public LoginController getLoginController()
+	{
+		
+	}
+	
+	public PartidaController getPartidaController(){
+		
+	}
+	}
+	
+|
 	
 }

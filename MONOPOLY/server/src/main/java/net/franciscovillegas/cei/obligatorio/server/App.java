@@ -11,14 +11,7 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 import net.franciscovillegas.cei.obligatorio.common.Server;
-import net.franciscovillegas.cei.obligatorio.server.entities.Address;
-import net.franciscovillegas.cei.obligatorio.server.entities.Task;
-import net.franciscovillegas.cei.obligatorio.server.entities.User;
 
-/**
- * Hello world!
- *
- */
 public class App {
 	public static void main(String[] args) {
 		EntityManager em = null;
@@ -35,7 +28,7 @@ public class App {
 			System.out.println("Server ready");
 			// new Memento();
 
-			// JPA
+			/*// JPA
 			EntityManagerFactory emf;
 			emf = Persistence.createEntityManagerFactory("jpaDS");
 			em = (EntityManager) emf.createEntityManager();
@@ -74,7 +67,7 @@ public class App {
 			query.setParameter("name", "algo");
 			u = (User) query.getSingleResult();
 			u.getTareas();
-			System.out.println("---->2");
+			System.out.println("---->2");*/
 			
 		} catch (Exception e) {
 			System.err.println("Server exception: " + e.toString());

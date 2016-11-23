@@ -50,7 +50,7 @@ public class App extends UnicastRemoteObject implements Observer {
 		App app = new App();
 	}
 
-	public void notifyMensajeJugadorCambioCasilla(MensajeJugadorCambioCasilla messaje) {
+	/* public void notifyMensajeJugadorCambioCasilla(MensajeJugadorCambioCasilla mesaje) {
 		this.window.moverJugador(mensaje);
-	}
+	}*/
 }
