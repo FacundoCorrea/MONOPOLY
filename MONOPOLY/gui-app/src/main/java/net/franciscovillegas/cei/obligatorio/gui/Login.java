@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 
 import net.franciscovillegas.cei.obligatorio.common.Server;
+import net.franciscovillegas.cei.obligatorio.common.dto.Jugador;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -12,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 import java.awt.event.ActionEvent;
 
 public class Login {
@@ -78,7 +80,18 @@ public class Login {
 			public void actionPerformed(ActionEvent arg0) {
 				String usuario = textField.getText();
 				String contraseña = textField_1.getText();
-				
+				try{
+				Jugador jugador = server.getLoginController().autenticar(usuario, contraseña);
+					if(jugador != null)
+					{
+						
+					}else{
+						
+					}
+				} catch (RemoteException e1)
+				{
+					e1.printStackTrace();
+				}
 			}
 		});
 		panel.add(btnEntrar);

@@ -7,7 +7,11 @@ import java.util.List;
 
 import net.franciscovillegas.cei.obligatorio.common.Observer;
 import net.franciscovillegas.cei.obligatorio.common.Server;
-import net.franciscovillegas.cei.obligatorio.common.MensajeJugadorCambioCasilla;;
+import net.franciscovillegas.cei.obligatorio.common.PartidaController;
+import net.franciscovillegas.cei.obligatorio.common.LoginController;
+import net.franciscovillegas.cei.obligatorio.server.Controllers.LoginControllerImpl;
+import net.franciscovillegas.cei.obligatorio.server.Controllers.PartidaControllerImpl;
+import net.franciscovillegas.cei.obligatorio.server.entities.LoginDominio;
 
 public class ServerImpl implements Server {
 
@@ -35,22 +39,15 @@ public class ServerImpl implements Server {
 	public void sendMessage(String message) throws RemoteException {
 		
 		// esta en common TODO hacer
-		MensajeJugadorCambioCasilla mensaje = new MensajeJugadorCambioCasilla(message);
-		for(Observer o : this.observers) {
-			o.notify(message);
-		}
 	}
 	
-	public LoginController getLoginController()
+	public LoginController getLoginController() throws RemoteException
 	{
-		
+		return LoginControllerImpl.getInstance();
 	}
 	
 	public PartidaController getPartidaController(){
-		
+		return null;
 	}
-	}
-	
-|
 	
 }

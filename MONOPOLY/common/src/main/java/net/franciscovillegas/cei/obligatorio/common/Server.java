@@ -11,8 +11,8 @@ public interface Server extends Remote {
 
 	public void addObserver(Observer observer) throws RemoteException;
 	
-	public LoginController getLoginController();
+	public LoginController getLoginController() throws RemoteException;
 	
-	public ControllerPartidaInicio getPartidaController();
+	public PartidaController getPartidaController();
 
 }

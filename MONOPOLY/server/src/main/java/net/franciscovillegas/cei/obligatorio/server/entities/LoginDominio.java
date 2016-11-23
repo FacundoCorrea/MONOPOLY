@@ -1,5 +1,5 @@
 package net.franciscovillegas.cei.obligatorio.server.entities;
 
-public class Login {
+public class LoginDominio {
 
 }
