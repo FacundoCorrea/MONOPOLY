@@ -13,6 +13,6 @@ public interface Server extends Remote {
 	
 	public LoginController getLoginController() throws RemoteException;
 	
-	public PartidaController getPartidaController();
+	public DadoController getDadoController() throws RemoteException;
 
 }

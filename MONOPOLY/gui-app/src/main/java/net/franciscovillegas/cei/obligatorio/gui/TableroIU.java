@@ -17,6 +17,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 import java.awt.event.ActionEvent;
 
 public class TableroIU {
@@ -24,6 +25,8 @@ public class TableroIU {
 	private JFrame frame;
 	private Server server;
 	private DefaultListModel<String> listModel;
+	private JButton btnTirarDado;
+	private JLabel lblDado;
 
 	/**
 	 * Launch the application.
@@ -32,7 +35,7 @@ public class TableroIU {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TableroIU window = new TableroIU();
+					TableroIU window = new TableroIU(null);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -43,9 +46,15 @@ public class TableroIU {
 
 	/**
 	 * Create the application.
+	 * @param server 
 	 */
-	public TableroIU() {
+	public TableroIU(Server server) {
+		this.server = server;
 		initialize();
+	}
+	
+	public void setVisible() {
+		frame.setVisible(true);
 	}
 
 	/**
@@ -206,12 +215,7 @@ public class TableroIU {
 		JLabel lblDestino = new JLabel("Destino");
 		panel_17.add(lblDestino);
 		
-		JButton btnTirarDado = new JButton("Tirar Dado");
-		btnTirarDado.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
+		btnTirarDado = new JButton("Tirar Dado");
 		springLayout.putConstraint(SpringLayout.SOUTH, btnTirarDado, -118, SpringLayout.SOUTH, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.NORTH, panel_9, 8, SpringLayout.SOUTH, btnTirarDado);
 		springLayout.putConstraint(SpringLayout.EAST, btnTirarDado, 0, SpringLayout.EAST, panel_1);
@@ -239,7 +243,7 @@ public class TableroIU {
 		lblMonopolito.setBackground(new Color(255, 0, 0));
 		frame.getContentPane().add(lblMonopolito);
 		
-		JLabel lblDado = new JLabel("Dado");
+		lblDado = new JLabel("Dado");
 		springLayout.putConstraint(SpringLayout.WEST, lblDado, 44, SpringLayout.EAST, panel_7);
 		springLayout.putConstraint(SpringLayout.SOUTH, lblDado, -6, SpringLayout.NORTH, btnTirarDado);
 		frame.getContentPane().add(lblDado);
@@ -248,6 +252,19 @@ public class TableroIU {
 		springLayout.putConstraint(SpringLayout.SOUTH, lblPregunta, -6, SpringLayout.NORTH, button);
 		springLayout.putConstraint(SpringLayout.EAST, lblPregunta, -64, SpringLayout.WEST, panel_15);
 		frame.getContentPane().add(lblPregunta);
+		
+		btnTirarDado.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					int n = server.getDadoController().tirarDado(); 
+					String f = String.valueOf(n);
+					lblDado.setText(f);
+				} catch (RemoteException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 		
 	}
 	

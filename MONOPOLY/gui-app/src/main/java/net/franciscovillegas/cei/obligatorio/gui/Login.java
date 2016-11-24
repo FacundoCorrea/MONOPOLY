@@ -22,7 +22,7 @@ public class Login {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JButton btnEntrar;
-	private Server server;
+	private Server server ;
 	private DefaultListModel<String> listModel;
 
 	/**
@@ -32,7 +32,7 @@ public class Login {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Login window = new Login();
+					Login window = new Login(null);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -44,7 +44,8 @@ public class Login {
 	/**
 	 * Create the application.
 	 */
-	public Login() {
+	public Login(Server server) {
+		this.server = server;
 		initialize();
 	}
 

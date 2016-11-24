@@ -7,10 +7,10 @@ import java.util.List;
 
 import net.franciscovillegas.cei.obligatorio.common.Observer;
 import net.franciscovillegas.cei.obligatorio.common.Server;
-import net.franciscovillegas.cei.obligatorio.common.PartidaController;
 import net.franciscovillegas.cei.obligatorio.common.LoginController;
+import net.franciscovillegas.cei.obligatorio.common.DadoController;
+import net.franciscovillegas.cei.obligatorio.server.Controllers.DadoControllerImp;
 import net.franciscovillegas.cei.obligatorio.server.Controllers.LoginControllerImpl;
-import net.franciscovillegas.cei.obligatorio.server.Controllers.PartidaControllerImpl;
 import net.franciscovillegas.cei.obligatorio.server.entities.LoginDominio;
 
 public class ServerImpl implements Server {
@@ -46,8 +46,10 @@ public class ServerImpl implements Server {
 		return LoginControllerImpl.getInstance();
 	}
 	
-	public PartidaController getPartidaController(){
-		return null;
+	
+	public DadoController getDadoController() throws RemoteException
+	{
+		return DadoControllerImp.getInstance();
 	}
 	
 }

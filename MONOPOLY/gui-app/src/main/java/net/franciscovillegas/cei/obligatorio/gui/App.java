@@ -33,8 +33,9 @@ public class App extends UnicastRemoteObject implements Observer {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					window = new TableroIU();
+					window = new TableroIU(server);
 					window.setServer(server);
+					window.setVisible();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
