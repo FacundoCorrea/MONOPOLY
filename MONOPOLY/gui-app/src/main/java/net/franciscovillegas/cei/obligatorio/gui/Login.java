@@ -24,6 +24,7 @@ public class Login {
 	private JButton btnEntrar;
 	private Server server ;
 	private DefaultListModel<String> listModel;
+	private TableroIU window;
 
 	/**
 	 * Launch the application.
@@ -47,6 +48,10 @@ public class Login {
 	public Login(Server server) {
 		this.server = server;
 		initialize();
+	}
+	
+	public void setVisible() {
+		frame.setVisible(true);
 	}
 
 	/**
@@ -83,6 +88,9 @@ public class Login {
 				String contraseña = textField_1.getText();
 				try{
 				Jugador jugador = server.getLoginController().autenticar(usuario, contraseña);
+				window = new TableroIU(server);
+				window.setServer(server);
+				window.setVisible();
 					if(jugador != null)
 					{
 						
