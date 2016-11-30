@@ -18,7 +18,7 @@ import net.franciscovillegas.cei.obligatorio.common.Server;
 public class App extends UnicastRemoteObject implements Observer {
 	
 	private Server server;
-	private Login window;
+	private TableroIU window;
 	
 	public App() throws RemoteException, NotBoundException {
 		System.out.println(System.currentTimeMillis());
@@ -33,7 +33,7 @@ public class App extends UnicastRemoteObject implements Observer {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					window = new Login(server);
+					window = new TableroIU(server);
 					window.setServer(server);
 					window.setVisible();
 				} catch (Exception e) {
