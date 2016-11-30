@@ -38,7 +38,7 @@ public class ServerImpl implements Server {
 
 	public void sendMessage(String message) throws RemoteException {
 		
-		// esta en common TODO hacer
+		// esta en common todo hacer
 	}
 	
 	public LoginController getLoginController() throws RemoteException
