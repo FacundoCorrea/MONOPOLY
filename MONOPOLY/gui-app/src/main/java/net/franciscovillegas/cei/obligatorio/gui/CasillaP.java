@@ -6,6 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import java.awt.BorderLayout;
+
+import net.franciscovillegas.cei.obligatorio.common.dto.JugadorDTO;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.SpringLayout;
 
@@ -16,6 +18,26 @@ public class CasillaP extends JPanel {
 	private JLabel lblJP2;
 	private JLabel lblJP3;
 	private JLabel lblJP4;
+	private JugadorDTO dueño = null;
+	private int precio;
+	
+	public void setDueño(JugadorDTO jugador){
+		this.dueño = jugador;
+	}
+	
+	public JugadorDTO getDueño(){
+		return this.dueño;
+	}
+
+	public int getPrecio() {
+		return precio;
+	}
+
+	public void setPrecio(int precio) {
+		this.precio = precio;
+	}
+
+
 
 	/**
 	 * Launch the application.

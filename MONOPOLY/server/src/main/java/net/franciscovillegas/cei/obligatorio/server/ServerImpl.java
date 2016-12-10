@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.franciscovillegas.cei.obligatorio.common.*;
+import net.franciscovillegas.cei.obligatorio.common.dto.JugadorDTO;
 import net.franciscovillegas.cei.obligatorio.server.Controllers.*;
 import net.franciscovillegas.cei.obligatorio.server.entities.LoginDominio;
 
@@ -62,6 +63,19 @@ public class ServerImpl implements Server {
 
 	public List<Observer> getObservers() throws RemoteException {
 		return observers;
+	}
+
+	public void setJugador(JugadorDTO jugador) throws RemoteException {
+		for(Observer o : this.observers) {
+			o.setJugador(jugador);
+		}
+		
+	}
+
+	public void pagarMulta(JugadorDTO dueño, int cantidad) throws RemoteException {
+		for(Observer o : this.observers) {
+			o.pagarMulta(dueño, cantidad);
+		}
 	}
 	
 }

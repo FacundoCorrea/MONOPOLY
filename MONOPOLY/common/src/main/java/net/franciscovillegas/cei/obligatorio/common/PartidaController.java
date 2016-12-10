@@ -19,7 +19,7 @@ public interface PartidaController extends Remote {
 	
 	public void empezarPartida() throws RemoteException;
 	
-	public void actualizarPosicionJugador(int posAnterior, int jugadorPos, int posicion) throws RemoteException;
+	public void cambiarPosicion(int posAnterior, int jugadorPos, int posicion) throws RemoteException;
 	
 	public void cambiarTurno(int jugPos) throws RemoteException;
 	

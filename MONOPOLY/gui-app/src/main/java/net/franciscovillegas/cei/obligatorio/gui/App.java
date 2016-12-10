@@ -24,15 +24,13 @@ public class App extends UnicastRemoteObject implements Observer {
 	private Server server;
 	private TableroIU window;
 	private JugadorDTO dueñoDelTablero; // Si jugador en turno == a esta poronga entonces actual. este tablero
+	public static void main(String[] args) throws RemoteException, NotBoundException {
+		App app = new App();
+	}
 	
 	public App() throws RemoteException, NotBoundException {
-		System.out.println(System.currentTimeMillis());
-		System.setProperty("java.security.policy","file:///java.policy");
-		System.out.println("Hello World!");
 		Registry registry = LocateRegistry.getRegistry(1099);
 		this.server = (Server) registry.lookup("server");
-		String response = server.sayHello();
-		System.out.println("response: " + response);
 		server.addObserver(this);
 		
 		EventQueue.invokeLater(new Runnable() {
@@ -54,9 +52,7 @@ public class App extends UnicastRemoteObject implements Observer {
 		this.server.sendMessage(message);
 	}
 	
-	public static void main(String[] args) throws RemoteException, NotBoundException {
-		App app = new App();
-	}
+
 
 	public void mostrarJugadores() throws RemoteException {
 		window.actualizar();
@@ -69,47 +65,43 @@ public class App extends UnicastRemoteObject implements Observer {
 	}
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 	public void actulizarTimer(int segundo) throws RemoteException {
-		// TODO Auto-generated method stub
-		
+		window.actualizarTimer(segundo);		
 	}
 
 
 	public void setJugador(JugadorDTO jugador) throws RemoteException {
-		// TODO Auto-generated method stub
-		
+		if(this.dueñoDelTablero == null){
+			this.dueñoDelTablero = jugador;
+		}	
 	}
 
 	public JugadorDTO getJugador() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		return this.dueñoDelTablero;
 	}
 
-	public void actualizarPosicionJugador(int posAnterior, int jugadorPos, int posicion) throws RemoteException {
-		// TODO Auto-generated method stub
+	public void cambiarPosicion(int posAnterior, int jugadorPos, int posicion) throws RemoteException {
+		window.cambiarPosicion(posAnterior,jugadorPos,posicion);
 		
 	}
 
 	public void cambiarTurno(int posJugador, JugadorDTO jugador) throws RemoteException {
-		// TODO Auto-generated method stub
+		window.cambiarTurno(posJugador, this.dueñoDelTablero, jugador);
 		
 	}
 
 
-	public void pagarMulta(JugadorDTO dueño) {
-		// TODO Auto-generated method stub
+	public void pagarMulta(JugadorDTO dueño , int cantidad) {
+		window.pagarMulta(dueño, cantidad);
 		
 	}
 	
 	public void comprarPropiedad(JugadorDTO jugador, int posicion) throws RemoteException {
-		// TODO Auto-generated method stub
+		window.comprarPropiedad(jugador, posicion);
 		
 	}
 	public void acciones(JugadorDTO jugador, java.util.List<String> acciones) throws RemoteException {
-		// TODO Auto-generated method stub
-		
-	}
-	public void pagarMulta(JugadorDTO dueño, int cantidad) throws RemoteException {
-		// TODO Auto-generated method stub
+		window.mostrarOpciones(jugador, acciones);
+
 		
 	}
 	

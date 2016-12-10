@@ -28,19 +28,11 @@ public class PartidaControllerImpl extends UnicastRemoteObject implements Partid
 		return instancia;
 	}
 
-
-
     public PartidaControllerImpl() throws RemoteException {
 		super();
 		partida = new Partida();
 		observadores = new ArrayList<Observer>();
 	}
-
-	/*public Jugada ejecutarAccion(Accion miAccion)
-    {
-        return miAccion.ejecutar();
-        
-    }*/
 
 	public void empezarPartida() throws RemoteException {
 		posiciones = new int[4][1];
@@ -85,18 +77,19 @@ public class PartidaControllerImpl extends UnicastRemoteObject implements Partid
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
-	public List<Jugador> darJugadoresEnPartida() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	public void accion(Jugador jugador, String accion, boolean dueÃ) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	public void actualizarPosicionJugador(int posAnterior, int jugadorPos, int posicion) throws RemoteException {
-		// TODO Auto-generated method stub
+	public void cambiarPosicion(int posAnterior, int jugadorPos, int posicion) throws RemoteException {
+		for(Observer o : observadores){
+			try {
+				o.cambiarPosicion(posAnterior, jugadorPos, posicion);
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			}
+		}
 		
 	}
 

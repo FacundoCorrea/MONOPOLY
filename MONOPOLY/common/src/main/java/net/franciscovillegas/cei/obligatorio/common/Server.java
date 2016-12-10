@@ -4,6 +4,8 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.List;
 
+import net.franciscovillegas.cei.obligatorio.common.dto.JugadorDTO;
+
 public interface Server extends Remote {
 
 	public String sayHello() throws RemoteException;
@@ -19,5 +21,10 @@ public interface Server extends Remote {
 	public DadoController getDadoController() throws RemoteException;
 	
 	public PartidaController getPartidaController() throws RemoteException;
+	
+	public void setJugador(JugadorDTO jugador) throws RemoteException;
+	
+	public void pagarMulta(JugadorDTO dueño, int cantidad) throws RemoteException;
+
 
 }

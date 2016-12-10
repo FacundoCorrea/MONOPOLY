@@ -21,7 +21,7 @@ public interface Observer extends Remote, Serializable {
 	
 	public JugadorDTO getJugador() throws RemoteException;
 	
-	public void actualizarPosicionJugador(int posAnterior, int jugadorPos, int posicion) throws RemoteException;
+	public void cambiarPosicion(int posA, int jugadorPos, int posicion) throws RemoteException;
 	
 	public void cambiarTurno(int posJugador, JugadorDTO jugador) throws RemoteException;
 	
