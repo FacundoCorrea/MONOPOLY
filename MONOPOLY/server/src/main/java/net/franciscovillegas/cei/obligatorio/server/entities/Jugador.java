@@ -19,7 +19,6 @@ public class Jugador implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int id;
-	
 	private int dinero;
 	private int ganadas;
 	private int perdidas;

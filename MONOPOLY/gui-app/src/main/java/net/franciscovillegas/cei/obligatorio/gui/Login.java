@@ -99,6 +99,7 @@ public class Login {
 						{
 							server.getPartidaController().agregarObserver(o);
 						}
+						frame.dispose();
 						
 					}else{
 						

@@ -13,7 +13,22 @@ public class PartidaControllerImpl extends UnicastRemoteObject implements Partid
 
 	private ArrayList<Observer> observadores ;
 	private Partida partida;
+	private int[][] posiciones;
 	
+	private static PartidaControllerImpl instancia;
+	
+	public PartidaControllerImpl darPartidaInstance(){
+		if(instancia == null){
+			try {
+				instancia = new PartidaControllerImpl();
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			}
+		}
+		return instancia;
+	}
+
+
 
     public PartidaControllerImpl() throws RemoteException {
 		super();
@@ -21,15 +36,28 @@ public class PartidaControllerImpl extends UnicastRemoteObject implements Partid
 		observadores = new ArrayList<Observer>();
 	}
 
-	public Jugada ejecutarAccion(Accion miAccion)
+	/*public Jugada ejecutarAccion(Accion miAccion)
     {
         return miAccion.ejecutar();
         
-    }
+    }*/
 
-	public void moverJugador() throws RemoteException {
+	public void empezarPartida() throws RemoteException {
+		posiciones = new int[4][1];
+		posiciones[0][0] = 0;
+		posiciones[1][0] = 0;
+		posiciones[2][0] = 0;
+		posiciones[3][0] = 0;
 		
+		for(Observer o : observadores){
+			try {
+				o.empezarPartida(partida.getJugadoresEnJuego().get(0));
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			}
+		}
 	}
+
 
 	public void agregarJugador(JugadorDTO j) throws RemoteException {
 		partida.agregarJugador(j);
@@ -53,6 +81,45 @@ public class PartidaControllerImpl extends UnicastRemoteObject implements Partid
 		observadores.add(o);
 		
 	}
-	
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+	public List<Jugador> darJugadoresEnPartida() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void accion(Jugador jugador, String accion, boolean dueÃ) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void actualizarPosicionJugador(int posAnterior, int jugadorPos, int posicion) throws RemoteException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void cambiarTurno(int jugPos) throws RemoteException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void comprarPropiedad(Jugador jugador, int posicion) throws RemoteException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void accion(JugadorDTO jugador, String accion, boolean dueÃ) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void comprarPropiedad(JugadorDTO jugador, int posicion)
+			throws RemoteException {
+		// TODO Auto-generated method stub
+		
+	}
+
 	
 }

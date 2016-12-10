@@ -27,6 +27,7 @@ import java.awt.event.ActionEvent;
 public class TableroIU {
 
 	private JFrame frame;
+	private JugadorDTO jugador;
 	private Server server;
 	private TableroDTO tablero;
 	private List<JugadorDTO> jugadores;
@@ -34,6 +35,8 @@ public class TableroIU {
 	private JButton btnTirarDado;
 	private JLabel lblDado;
 	private JLabel lblMonopolito;
+	private int posAnterior = -1;
+	private CasillaP panel, panel_1, panel_2, panel_3, panel_4, panel_5, panel_6, panel_7, panel_8, panel_9, panel_10, panel_11, panel_12, panel_13, panel_14, panel_15;
 
 	/**
 	 * Launch the application.
@@ -293,7 +296,7 @@ public class TableroIU {
 	public void actualizar() throws RemoteException
 	{
 		jugadores = server.getPartidaController().listarJugadores();
-		String nombres = "";
+		String nombres = "-";
 		for(JugadorDTO j : jugadores)
 		{
 			nombres += j.getNombre();
@@ -301,4 +304,28 @@ public class TableroIU {
 		}
 		lblMonopolito.setText(nombres);
 	}
+	
+	public void empezarPartida(JugadorDTO jugador, JugadorDTO recibeTrurno) {
+		if(jugador.getNombre().equals(recibeTrurno.getNombre())) {
+			btnTirarDado.setEnabled(true);
+		} 
+		
+		//lblEsperando.setText("");
+		for(int i=1; i<=jugadores.size(); i++){
+			panel.getLabel(i).setVisible(true);
+		}
+		//lblTurno.setText("Es el turno de "+jugadores.get(0).getNombre()+" (JP1)");
+		posAnterior = 0;
+	}
+	
+	public void setJugador(JugadorDTO jugador) {
+		this.jugador = jugador;
+		
+		mostrarDatos();
+	}
+	
+	private void mostrarDatos(){
+		//lblDinero.setText("$"+this.jugador.getDinero());
+	}
+
 }

@@ -4,6 +4,7 @@ import net.franciscovillegas.cei.obligatorio.server.entities.Jugador;
 import net.franciscovillegas.cei.obligatorio.server.entities.Tablero;
 import net.franciscovillegas.cei.obligatorio.server.entities.Propiedad;
 import net.franciscovillegas.cei.obligatorio.server.entities.Jugada;
+import net.franciscovillegas.cei.obligatorio.common.dto.JugadorDTO;
 import net.franciscovillegas.cei.obligatorio.server.entities.Accion;
 
 public class AccionControllerImpl {
@@ -21,7 +22,7 @@ public class AccionControllerImpl {
         return instancia;
     }
     
-    public Jugada comprar(Accion miAccion) {
+  /*  public Jugada comprar(Accion miAccion) {
 
         try {
 
@@ -38,14 +39,14 @@ public class AccionControllerImpl {
 
         return JugadaControllerImpl.construirJugada(miAccion);
 
-    }
+    }*/
 
     public Jugada vender(Accion miAccion) {
         return JugadaControllerImpl.construirJugada(miAccion);
 
     }
 
-    public Jugada pagarAlquiler(Accion miAccion) {
+   /* public Jugada pagarAlquiler(Accion miAccion) {
 
         try {
 
@@ -63,13 +64,13 @@ public class AccionControllerImpl {
         }
         return JugadaControllerImpl.construirJugada(miAccion);
 
-    }
+    }*/
 
-    public Jugada tirarDado(Accion miAccion) {
+   /*  public Jugada tirarDado(Accion miAccion) {
 
         try {
 
-            Jugador miJugador = Partida.getInstance().getJugadordeTurno();
+            JugadorDTO miJugador = Partida.getInstance().getJugadordeTurno();
 
             if (Tablero.getInstance().darCasillero(miJugador.getPosicion()) instanceof Propiedad) {
                 if (((Propiedad)Tablero.getInstance().darCasillero(miJugador.getPosicion())).getDueño() != miJugador) {
@@ -88,7 +89,7 @@ public class AccionControllerImpl {
         }
         return JugadaControllerImpl.construirJugada(miAccion);
 
-    }
+    }*/
 
    /* public Jugada construir(Accion miAccion) {
 

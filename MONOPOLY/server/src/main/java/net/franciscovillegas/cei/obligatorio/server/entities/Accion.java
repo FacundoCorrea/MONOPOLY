@@ -21,7 +21,7 @@ public class Accion {
     }
 
 	
-	public Jugada Acciones()
+	/*public Jugada Acciones()
     {
         if (tipo.equals("comprar"))
         {
@@ -31,13 +31,13 @@ public class Accion {
             
         }
         
-        /*if (tipo.equals("construir"))
+        if (tipo.equals("construir"))
         {
             
            return AccionControllerImpl.getinstance().construir(this);
 
             
-        }*/
+        }
         
         if (tipo.equals("pagarAlquiler"))
         {
@@ -81,13 +81,13 @@ public class Accion {
             
         }
         
-       /* if (tipo.equals("construir"))
+        if (tipo.equals("construir"))
         {
             
            return AccionControllerImpl.getinstance().construir(this);
 
             
-        }*/
+        }
         
         if (tipo.equals("pagarAlquiler"))
         {
@@ -120,7 +120,7 @@ public class Accion {
         }
         
         return null;
-    }
+    }*/
 
 
 }

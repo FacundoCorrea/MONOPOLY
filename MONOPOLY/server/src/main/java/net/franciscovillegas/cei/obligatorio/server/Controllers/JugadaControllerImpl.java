@@ -28,8 +28,8 @@ private static JugadaControllerImpl instancia;
         miJugada.setJugadorAnterior(Partida.getInstance().getJugadordeTurno());
         miJugada.setAccionRealizada(accionRealizada);
         
-        if (accionRealizada.getTipo().equals("tirarDado") &&
-                Tablero.getInstance().darCasillero(Partida.getInstance().getJugadordeTurno().getPosicion()) instanceof Propiedad)
+        if (accionRealizada.getTipo().equals("tirarDado")) //&&
+              //  Tablero.getInstance().darCasillero(Partida.getInstance().getJugadordeTurno().getPosicion()) instanceof Propiedad)
         {
             miJugada.setAccionesDisponibles(accionesSobreTerreno());
             miJugada.setJugadorSiguiente(miJugada.getJugadorAnterior());

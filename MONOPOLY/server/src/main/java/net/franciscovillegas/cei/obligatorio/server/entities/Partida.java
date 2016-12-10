@@ -6,11 +6,11 @@ import java.util.List;
 
 public class Partida {
 
-	private List<Jugador> Jugadores;
+	private List<JugadorDTO> Jugadores;
 	
 	private List<JugadorDTO> JugadoresEnJuego;
 	
-	private Jugador JugadordeTurno;
+	private JugadorDTO JugadordeTurno;
 	
 	private Tablero tablero;
 	
@@ -23,12 +23,12 @@ public class Partida {
 	}
 	
 	
-	public Jugador getJugadordeTurno() {
+	public JugadorDTO getJugadordeTurno() {
 		return JugadordeTurno;
 	}
 
 
-	public void setJugadordeTurno(Jugador jugadordeTurno) {
+	public void setJugadordeTurno(JugadorDTO jugadordeTurno) {
 		JugadordeTurno = jugadordeTurno;
 	}
 
@@ -41,7 +41,7 @@ public class Partida {
         return instancia;
     }
 
-	public Jugador getSiguienteJugador(Jugador miJugador) {
+	public JugadorDTO getSiguienteJugador(JugadorDTO miJugador) {
 
         for (int i = 0; i < Jugadores.size() - 1; i++) {
             if (Jugadores.get(i).equals(miJugador))
@@ -53,11 +53,11 @@ public class Partida {
         
     }
 	
-	public List<Jugador> getJugadores() {
+	public List<JugadorDTO> getJugadores() {
 		return Jugadores;
 	}
 
-	public void setJugadores(List<Jugador> jugadores) {
+	public void setJugadores(List<JugadorDTO> jugadores) {
 		Jugadores = jugadores;
 	}
 
@@ -93,7 +93,7 @@ public class Partida {
 		}
 	}
 
-	public Partida(List<Jugador> jugadores, List<JugadorDTO> jugadoresEnJuego,Tablero pTablero,Mazo mazo) {
+	public Partida(List<JugadorDTO> jugadores, List<JugadorDTO> jugadoresEnJuego,Tablero pTablero,Mazo mazo) {
 		super();
 		Jugadores = jugadores;
 		JugadoresEnJuego = jugadoresEnJuego;

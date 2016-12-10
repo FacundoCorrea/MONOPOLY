@@ -2,11 +2,13 @@ package net.franciscovillegas.cei.obligatorio.server.entities;
 
 import java.util.List;
 
+import net.franciscovillegas.cei.obligatorio.common.dto.JugadorDTO;
+
 public class Jugada {
 
 	private Accion accionRealizada;
-	private Jugador jugadorAnterior;
-	private Jugador jugadorSiguiente;
+	private JugadorDTO jugadorAnterior;
+	private JugadorDTO jugadorSiguiente;
 	private List<Accion> accionesDisponibles;
 	
 	
@@ -16,16 +18,16 @@ public class Jugada {
 	public void setAccionRealizada(Accion accionRealizada) {
 		this.accionRealizada = accionRealizada;
 	}
-	public Jugador getJugadorAnterior() {
+	public JugadorDTO getJugadorAnterior() {
 		return jugadorAnterior;
 	}
-	public void setJugadorAnterior(Jugador jugadorAnterior) {
+	public void setJugadorAnterior(JugadorDTO jugadorAnterior) {
 		this.jugadorAnterior = jugadorAnterior;
 	}
-	public Jugador getJugadorSiguiente() {
+	public JugadorDTO getJugadorSiguiente() {
 		return jugadorSiguiente;
 	}
-	public void setJugadorSiguiente(Jugador jugadorSiguiente) {
+	public void setJugadorSiguiente(JugadorDTO jugadorSiguiente) {
 		this.jugadorSiguiente = jugadorSiguiente;
 	}
 	public List<Accion> getAccionesDisponibles() {

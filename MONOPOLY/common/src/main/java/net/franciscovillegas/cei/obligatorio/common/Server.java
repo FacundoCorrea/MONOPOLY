@@ -18,8 +18,6 @@ public interface Server extends Remote {
 	
 	public DadoController getDadoController() throws RemoteException;
 	
-	public TableroController getTableroController() throws RemoteException;
-	
 	public PartidaController getPartidaController() throws RemoteException;
 
 }

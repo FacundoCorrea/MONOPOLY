@@ -6,6 +6,7 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.List;
 import java.util.Scanner;
 
 import net.franciscovillegas.cei.obligatorio.common.Observer;
@@ -18,6 +19,8 @@ import net.franciscovillegas.cei.obligatorio.common.dto.JugadorDTO;
  */
 public class App extends UnicastRemoteObject implements Observer {
 	
+
+	private static final long serialVersionUID = 1L;
 	private Server server;
 	private TableroIU window;
 	private JugadorDTO dueñoDelTablero; // Si jugador en turno == a esta poronga entonces actual. este tablero
@@ -59,5 +62,61 @@ public class App extends UnicastRemoteObject implements Observer {
 		window.actualizar();
 		
 	}
+
+	public void empezarPartida(JugadorDTO jugador) throws RemoteException {
+		window.empezarPartida(this.dueñoDelTablero, jugador);
+		window.setJugador(this.dueñoDelTablero);	
+	}
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+	public void actulizarTimer(int segundo) throws RemoteException {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	public void setJugador(JugadorDTO jugador) throws RemoteException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public JugadorDTO getJugador() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void actualizarPosicionJugador(int posAnterior, int jugadorPos, int posicion) throws RemoteException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void cambiarTurno(int posJugador, JugadorDTO jugador) throws RemoteException {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	public void pagarMulta(JugadorDTO dueño) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public void comprarPropiedad(JugadorDTO jugador, int posicion) throws RemoteException {
+		// TODO Auto-generated method stub
+		
+	}
+	public void acciones(JugadorDTO jugador, java.util.List<String> acciones) throws RemoteException {
+		// TODO Auto-generated method stub
+		
+	}
+	public void pagarMulta(JugadorDTO dueño, int cantidad) throws RemoteException {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
+	
+	
+
+
 
 }
