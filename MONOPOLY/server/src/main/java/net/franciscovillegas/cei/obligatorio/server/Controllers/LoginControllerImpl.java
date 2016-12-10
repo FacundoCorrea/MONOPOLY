@@ -4,12 +4,12 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
 import net.franciscovillegas.cei.obligatorio.common.LoginController;
-import net.franciscovillegas.cei.obligatorio.common.dto.Jugador;
+import net.franciscovillegas.cei.obligatorio.common.dto.JugadorDTO;
 
 public class LoginControllerImpl extends UnicastRemoteObject implements LoginController {
 
 	private static final long serialVersionUID = 1L;
-	private static LoginController instance = null;
+	private static LoginController instance ;
 
 	public static LoginController getInstance() throws RemoteException {
 		if(instance == null) {
@@ -22,8 +22,8 @@ public class LoginControllerImpl extends UnicastRemoteObject implements LoginCon
 		super();
 	}
 
-	public Jugador autenticar(String username, String password) throws RemoteException {
-		return null;
+	public JugadorDTO autenticar(String username, String password) throws RemoteException {
+		return new JugadorDTO(username,password);
 	}
 
 	

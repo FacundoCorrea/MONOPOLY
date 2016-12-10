@@ -10,6 +10,7 @@ import java.util.Scanner;
 
 import net.franciscovillegas.cei.obligatorio.common.Observer;
 import net.franciscovillegas.cei.obligatorio.common.Server;
+import net.franciscovillegas.cei.obligatorio.common.dto.JugadorDTO;
 
 /**
  * Hello world!
@@ -18,7 +19,8 @@ import net.franciscovillegas.cei.obligatorio.common.Server;
 public class App extends UnicastRemoteObject implements Observer {
 	
 	private Server server;
-	private Login window;
+	private TableroIU window;
+	private JugadorDTO dueñoDelTablero; // Si jugador en turno == a esta poronga entonces actual. este tablero
 	
 	public App() throws RemoteException, NotBoundException {
 		System.out.println(System.currentTimeMillis());
@@ -33,9 +35,11 @@ public class App extends UnicastRemoteObject implements Observer {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					window = new Login(server);
+					window = new TableroIU(server);
 					window.setServer(server);
 					window.setVisible();
+					Login login = new Login(server);
+					login.setVisible();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -49,6 +53,11 @@ public class App extends UnicastRemoteObject implements Observer {
 	
 	public static void main(String[] args) throws RemoteException, NotBoundException {
 		App app = new App();
+	}
+
+	public void mostrarJugadores() throws RemoteException {
+		window.actualizar();
+		
 	}
 
 }

@@ -5,9 +5,15 @@ import java.util.List;
 public class Tablero {
 
 	private Casillero[] casilleros = new Casillero[16];
+	private static Tablero instance;
+
 
 
 	public Tablero() {
+	}
+	
+	private void crearTablero()
+	{
 		casilleros[0] = new Otra(1, "Inicio",null, "Inicio", "Inicio de la partida", 200);
 		casilleros[1] = new Propiedad(2, "Propiedad",null,"Maldonado","Verde",200,-20,0,false);
 		casilleros[2] = new Otra(3,"Suerte",null,"Suerte","Suerte",0);
@@ -25,6 +31,27 @@ public class Tablero {
 		casilleros[14] = new Empresa(15,"Empresa",null,"Luz",400,-40);
 		casilleros[15] = new Propiedad(16,"Propiedad",null,"Brasilia","Violeta",100,-10,0,false);
 	}
+	
+
+    public static Tablero getInstance() {
+        
+        if(instance == null)
+        {
+            instance = new Tablero();
+            instance.crearTablero();
+        }
+
+      
+        return instance;
+    }
+    
+    public Casillero darCasillero(int pos)
+    {
+    	return casilleros[pos];
+    }
+    
+    
+
 	
 	
 }

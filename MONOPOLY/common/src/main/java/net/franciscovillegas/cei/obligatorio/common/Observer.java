@@ -8,4 +8,6 @@ public interface Observer extends Remote, Serializable {
 
 	//public void notify(String message) throws RemoteException;
 	
+	public void mostrarJugadores() throws RemoteException;
+	
 }

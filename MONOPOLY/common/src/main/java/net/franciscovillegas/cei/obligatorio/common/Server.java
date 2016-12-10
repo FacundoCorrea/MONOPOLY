@@ -2,6 +2,7 @@ package net.franciscovillegas.cei.obligatorio.common;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.util.List;
 
 public interface Server extends Remote {
 
@@ -11,8 +12,14 @@ public interface Server extends Remote {
 
 	public void addObserver(Observer observer) throws RemoteException;
 	
+	public List<Observer> getObservers() throws RemoteException;
+	
 	public LoginController getLoginController() throws RemoteException;
 	
 	public DadoController getDadoController() throws RemoteException;
+	
+	public TableroController getTableroController() throws RemoteException;
+	
+	public PartidaController getPartidaController() throws RemoteException;
 
 }

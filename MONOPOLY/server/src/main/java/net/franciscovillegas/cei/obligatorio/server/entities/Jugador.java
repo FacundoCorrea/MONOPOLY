@@ -20,13 +20,14 @@ public class Jugador implements Serializable{
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int id;
 	
-	
+	private int dinero;
 	private int ganadas;
 	private int perdidas;
 	private int cartaCarcel;
 	private int posicion;
 	private String usuario;
 	private String contraseña;
+	
 	public int getId() {
 		return id;
 	}
@@ -95,7 +96,7 @@ public class Jugador implements Serializable{
 		return serialVersionUID;
 	}
 
-	private int dinero;
+
 	
 	public Jugador(int id, int ganadas, int perdidas, int cartaCarcel, int posicion, String usuario, String contraseña,
 			int dinero) {

@@ -1,11 +1,13 @@
 package net.franciscovillegas.cei.obligatorio.gui;
 
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 
+import net.franciscovillegas.cei.obligatorio.common.Observer;
 import net.franciscovillegas.cei.obligatorio.common.Server;
-import net.franciscovillegas.cei.obligatorio.common.dto.Jugador;
+import net.franciscovillegas.cei.obligatorio.common.dto.*;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -14,6 +16,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
+import java.util.List;
 import java.awt.event.ActionEvent;
 
 public class Login {
@@ -87,12 +90,15 @@ public class Login {
 				String usuario = textField.getText();
 				String contraseña = textField_1.getText();
 				try{
-				Jugador jugador = server.getLoginController().autenticar(usuario, contraseña);
-				window = new TableroIU(server);
-				window.setServer(server);
-				window.setVisible();
+				JugadorDTO jugador = server.getLoginController().autenticar(usuario, contraseña);
 					if(jugador != null)
 					{
+						server.getPartidaController().agregarJugador(jugador);
+						List<Observer> observadores = server.getObservers();
+						for(Observer o : observadores)
+						{
+							server.getPartidaController().agregarObserver(o);
+						}
 						
 					}else{
 						

@@ -5,7 +5,6 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.Random;
 
 import net.franciscovillegas.cei.obligatorio.common.DadoController;
-import net.franciscovillegas.cei.obligatorio.common.dto.Jugador;
 
 public class DadoControllerImp extends UnicastRemoteObject implements DadoController{
 
