@@ -38,7 +38,10 @@ public class ServerImpl implements Server {
 
 	public void sendMessage(String message) throws RemoteException {
 		
-		// esta en common TODO hacer
+		for(Observer o : this.observers) {
+			o.sendMessage(message);
+		}
+
 	}
 	
 	public LoginController getLoginController() throws RemoteException
@@ -52,10 +55,6 @@ public class ServerImpl implements Server {
 		return DadoControllerImp.getInstance();
 	}
 	
-	public TableroController getTableroController() throws RemoteException
-	{
-		return TableroControllerImpl.getinstance();
-	}
 
 	public PartidaController getPartidaController() throws RemoteException {
 		return pc;

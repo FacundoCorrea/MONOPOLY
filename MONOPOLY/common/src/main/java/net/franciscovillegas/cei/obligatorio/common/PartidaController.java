@@ -13,7 +13,6 @@ public interface PartidaController extends Remote {
 	public List<JugadorDTO> listarJugadores() throws RemoteException;
 	
 	public void agregarObserver(Observer o) throws	RemoteException;
-	///////////////////////////////////////////////////////////////////////////////
 	
 	public void accion(JugadorDTO jugador, String accion, boolean dueño) throws RemoteException;
 	
