@@ -291,13 +291,6 @@ public class TableroIU {
 		
 	}
 	
-	public void CambiarPosicion(int n)
-	{
-		if(n == 0)
-		{
-			
-		}
-	}
 	public void addMessage(String messaje) {
 		listModel.addElement(messaje);
 	}
