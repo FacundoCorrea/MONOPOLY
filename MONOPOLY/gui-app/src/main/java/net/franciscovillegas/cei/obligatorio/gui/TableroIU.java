@@ -47,6 +47,9 @@ public class TableroIU {
 	private boolean carcel = false;
 	private JLabel lblMonopolito;
 	private int posAnterior = -1;
+        private List<String> suertes = new ArrayList<String>();
+	private List<String> destinos = new ArrayList<String>();
+
 	private CasillaP panel, panel_1, panel_2, panel_3, panel_4, panel_5, panel_6, panel_7, panel_8, panel_9, panel_10, panel_11, panel_12, panel_13, panel_14, panel_15;
 
 	/**
@@ -73,10 +76,23 @@ public class TableroIU {
 		this.server = server;
 		jugadores = new ArrayList<JugadorDTO>();
 		initialize();
+                llenarPosiciones();
+		llenarListas();
+
 	}
 	
 	public void setVisible() {
 		frame.setVisible(true);
+	}
+        private JugadorDTO getSiguienteJugador(JugadorDTO jugador){
+		int i = getJugadorPos(jugador);
+		i = i++;
+		
+		if(i >= jugadores.size()){
+			i = 0;
+		}
+		
+		return jugadores.get(i);
 	}
 
 	/**
@@ -291,13 +307,20 @@ public class TableroIU {
 		
 	}
 	
+	public void CambiarPosicion(int n)
+	{
+		if(n == 0)
+		{
+			
+		}
+	}
 	public void addMessage(String messaje) {
 		listModel.addElement(messaje);
 	}
 	public void setServer(Server server) {
 		this.server = server;
 	}
-	
+
 	public void actualizar() throws RemoteException
 	{
 		jugadores = server.getPartidaController().listarJugadores();
@@ -328,9 +351,13 @@ public class TableroIU {
 		
 		mostrarDatos();
 	}
-	
+        public Jugador getJugador() {
+		return this.jugador;
+	}
+
+        
 	private void mostrarDatos(){
-		//lblDinero.setText("$"+this.jugador.getDinero());
+		lblDinero.setText("$"+this.jugador.getDinero());
 	}
 	
 	public void cambiarPosicion(int posAnterior, int jugadorPos, int posicion) {
@@ -579,6 +606,35 @@ public class TableroIU {
 	
 	private JugadorDTO darDueño(int posicion){
 		return getPanel(posicion).getDueño();
+	}
+        private void llenarListas(){
+		suertes.add("Planta Arboles en sus barrios y recibe por cada propiedad $50.");
+		suertes.add("Usted ha sido elegido Presidente del Consejo. Pague $50 a cada uno de los jugadores.");
+		suertes.add("Le paga a cada jugador $25 por deudas antiguas.");
+		suertes.add("El siguiente jugador estÃ¡ algo triste y usted con su gran corazÃ³n le obsequia $50.");
+	
+		destinos.add("Usted ha ganado el segundo premio en un certamen de belleza. Cobre $75 a cada participante.");
+		destinos.add("Vaya a la cÃ¡rcel.");
+		destinos.add("Una tia abuela desconocida choca con su Ferrari y lamentablemente fallece. Usted hereda $200.");
+		destinos.add("Problemas con la DGI. Pague al banco $250.");
+	}
+        private void llenarPosiciones(){
+		posiciones[0][0] = CasillaTipo.INICIO;
+		posiciones[1][0] = CasillaTipo.PROPIEDAD;
+		posiciones[2][0] = CasillaTipo.SERVICIO;
+		posiciones[3][0] = CasillaTipo.PROPIEDAD;
+		posiciones[4][0] = CasillaTipo.CARCEL;
+		posiciones[5][0] = CasillaTipo.PROPIEDAD;
+		posiciones[6][0] = CasillaTipo.DESTINO;
+		posiciones[7][0] = CasillaTipo.PROPIEDAD;
+		posiciones[8][0] = CasillaTipo.LIBRE;
+		posiciones[9][0] = CasillaTipo.PROPIEDAD;
+		posiciones[10][0] = CasillaTipo.SERVICIO;
+		posiciones[11][0] = CasillaTipo.PROPIEDAD;
+		posiciones[12][0] = CasillaTipo.POLICIA;
+		posiciones[13][0] = CasillaTipo.PROPIEDAD;
+		posiciones[14][0] = CasillaTipo.SUERTE;
+		posiciones[15][0] = CasillaTipo.PROPIEDAD;
 	}
 
 }
