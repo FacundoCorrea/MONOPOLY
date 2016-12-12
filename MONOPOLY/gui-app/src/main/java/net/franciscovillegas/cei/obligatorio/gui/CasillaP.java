@@ -42,7 +42,7 @@ public class CasillaP extends JPanel {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -53,12 +53,12 @@ public class CasillaP extends JPanel {
 				}
 			}
 		});
-	}
+	} */
 
 	/**
 	 * Create the application.
 	 */
-	public CasillaP() {
+	public CasillaP(CasillaTipo casillaTipo) {
 		SpringLayout springLayout = new SpringLayout();
 		setLayout(springLayout);
 		
@@ -94,16 +94,16 @@ public class CasillaP extends JPanel {
 		JLabel j = null;
 		
 		switch (i) {
-		case 0:
+		case 1:
 			j = lblJP1;
 			break;
-		case 1:
+		case 2:
 			j = lblJP2;
 			break;
-		case 2:
+		case 3:
 			j = lblJP3;
 			break;
-		case 3:
+		case 4:
 			j = lblJP4;
 			break;
 

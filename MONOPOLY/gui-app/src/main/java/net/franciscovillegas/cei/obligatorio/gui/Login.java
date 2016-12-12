@@ -94,6 +94,7 @@ public class Login {
 					if(jugador != null)
 					{
 						server.getPartidaController().agregarJugador(jugador);
+						server.setJugador(jugador);
 						List<Observer> observadores = server.getObservers();
 						for(Observer o : observadores)
 						{

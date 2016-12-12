@@ -58,11 +58,6 @@ public class PartidaControllerImpl extends UnicastRemoteObject implements Partid
 
 	public void agregarJugador(JugadorDTO j) throws RemoteException {
 		partida.agregarJugador(j);
-		actualizar();
-	}
-	
-	private void actualizar() throws RemoteException
-	{
 		actulizarUI();
 		partidaCountdown();
 	}
@@ -73,7 +68,11 @@ public class PartidaControllerImpl extends UnicastRemoteObject implements Partid
 	}
 
 	public void agregarObserver(Observer o) throws RemoteException {
-		observadores.add(o);
+		if(!observadores.contains(o))
+		{
+		observadores.add(o);  
+		actulizarUI();
+		}
 		
 	}
 
@@ -127,8 +126,9 @@ public class PartidaControllerImpl extends UnicastRemoteObject implements Partid
 		
 	}
 
-	public void cambiarTurno(int jugPos) throws RemoteException {//JugPos: 1, Size: 2, pos: 0
+	public void cambiarTurno(int jugPos) throws RemoteException {
 		List<JugadorDTO> jugadores = partida.getJugadoresEnJuego();
+		System.out.println("SIZE=" + jugadores.size());
 		int pos = jugPos+1;
 		
 		if(jugadores.size() <= pos){
@@ -190,7 +190,7 @@ public class PartidaControllerImpl extends UnicastRemoteObject implements Partid
 	private void actulizarUI(){
 		for(Observer o : observadores){
 			try {
-				o.sendMessage("Notificar");
+				o.notificar("Notificar");
 			} catch (RemoteException e) {
 				e.printStackTrace();
 			}
@@ -200,7 +200,7 @@ public class PartidaControllerImpl extends UnicastRemoteObject implements Partid
 	private void actualizarTimer(int segundo){
 		for(Observer o : observadores){
 			try {
-				o.actulizarTimer(segundo);
+				o.actualizarTimer(segundo);
 			} catch (RemoteException e) {
 				e.printStackTrace();
 			}

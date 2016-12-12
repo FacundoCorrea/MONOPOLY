@@ -39,7 +39,7 @@ public class ServerImpl implements Server {
 	public void sendMessage(String message) throws RemoteException {
 		
 		for(Observer o : this.observers) {
-			o.sendMessage(message);
+			o.notificar(message);
 		}
 
 	}

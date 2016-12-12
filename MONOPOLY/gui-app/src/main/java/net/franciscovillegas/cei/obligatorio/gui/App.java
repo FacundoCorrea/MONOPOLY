@@ -23,9 +23,9 @@ public class App extends UnicastRemoteObject implements Observer {
 	private static final long serialVersionUID = 1L;
 	private Server server;
 	private TableroIU window;
-	private JugadorDTO dueñoDelTablero; // Si jugador en turno == a esta poronga entonces actual. este tablero
+	private JugadorDTO dueñoDelTablero; 
 	public static void main(String[] args) throws RemoteException, NotBoundException {
-		App app = new App();
+		new App();
 	}
 	
 	public App() throws RemoteException, NotBoundException {
@@ -50,6 +50,7 @@ public class App extends UnicastRemoteObject implements Observer {
 	
 	public void sendMessage(String message) throws RemoteException {
 		this.server.sendMessage(message);
+		window.actualizar();
 	}
 	
 
@@ -63,12 +64,6 @@ public class App extends UnicastRemoteObject implements Observer {
 		window.empezarPartida(this.dueñoDelTablero, jugador);
 		window.setJugador(this.dueñoDelTablero);	
 	}
-///////////////////////////////////////////////////////////////////////////////////////////////////////
-	public void actulizarTimer(int segundo) throws RemoteException {
-		window.actualizarTimer(segundo);		
-	}
-
-
 	public void setJugador(JugadorDTO jugador) throws RemoteException {
 		if(this.dueñoDelTablero == null){
 			this.dueñoDelTablero = jugador;
@@ -102,6 +97,16 @@ public class App extends UnicastRemoteObject implements Observer {
 	public void acciones(JugadorDTO jugador, java.util.List<String> acciones) throws RemoteException {
 		window.mostrarOpciones(jugador, acciones);
 
+		
+	}
+
+	public void actualizarTimer(int segundo) throws RemoteException {
+		window.actualizarTimer(segundo);	
+		
+	}
+
+	public void notificar(String mensaje) throws RemoteException {
+		window.actualizar();
 		
 	}
 	

@@ -12,10 +12,10 @@ public interface Observer extends Remote, Serializable {
 	public void mostrarJugadores() throws RemoteException;
 	
 	public void empezarPartida(JugadorDTO jugador) throws RemoteException;
-/////////////////////////////////////////////////////////////////////////////////////////
-	public void sendMessage(String mensaje) throws RemoteException;
+
+	public void notificar(String mensaje) throws RemoteException;
 	
-	public void actulizarTimer(int segundo) throws RemoteException;
+	public void actualizarTimer(int segundo) throws RemoteException;
 	
 	public void setJugador(JugadorDTO jugador) throws RemoteException;
 	
