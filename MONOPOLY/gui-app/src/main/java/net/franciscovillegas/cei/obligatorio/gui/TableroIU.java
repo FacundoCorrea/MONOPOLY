@@ -30,7 +30,6 @@ public class TableroIU {
 	private JFrame frame;
 	private JugadorDTO jugador;
 	private Server server;
-	private TableroDTO tablero;
 	private List<JugadorDTO> jugadores;
 	private DefaultListModel<String> listModel;
 	private JLabel lblEsperandoJugadores;
@@ -276,7 +275,9 @@ public class TableroIU {
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
+				
 					server.getPartidaController().comprarPropiedad(jugador, posicion);
+					Comprobar(jugador);
 					
 				} catch (RemoteException e1) {
 					e1.printStackTrace();
@@ -302,9 +303,9 @@ public class TableroIU {
 		
 		lblMonopolito = new JLabel("MONOPOLITO");
 		springLayout.putConstraint(SpringLayout.NORTH, lblMonopolito, 60, SpringLayout.SOUTH, panel_16);
-		springLayout.putConstraint(SpringLayout.WEST, lblMonopolito, 198, SpringLayout.WEST, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.WEST, lblMonopolito, 220, SpringLayout.WEST, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.SOUTH, lblMonopolito, 0, SpringLayout.SOUTH, panel_6);
-		springLayout.putConstraint(SpringLayout.EAST, lblMonopolito, -124, SpringLayout.WEST, panel_14);
+		springLayout.putConstraint(SpringLayout.EAST, lblMonopolito, 0, SpringLayout.EAST, panel_2);
 		lblMonopolito.setForeground(Color.BLACK);
 		lblMonopolito.setBackground(new Color(255, 0, 0));
 		frame.getContentPane().add(lblMonopolito);
@@ -334,14 +335,14 @@ public class TableroIU {
 		frame.getContentPane().add(lblInfo);
 		
 		btnSalirDeLa = new JButton("Salir de la Carcel");
+		springLayout.putConstraint(SpringLayout.NORTH, btnSalirDeLa, 43, SpringLayout.SOUTH, panel_1);
+		springLayout.putConstraint(SpringLayout.EAST, btnSalirDeLa, -6, SpringLayout.WEST, panel_17);
 		btnSalirDeLa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				salirCarcel();
 			}
 		});
 		btnSalirDeLa.setEnabled(false);
-		springLayout.putConstraint(SpringLayout.WEST, btnSalirDeLa, 3, SpringLayout.EAST, lblMonopolito);
-		springLayout.putConstraint(SpringLayout.SOUTH, btnSalirDeLa, 0, SpringLayout.SOUTH, panel_6);
 		frame.getContentPane().add(btnSalirDeLa);
 		
 		btnTirarDado.addActionListener(new ActionListener() {
@@ -551,10 +552,10 @@ public class TableroIU {
 		//lblTurno.setText("Es el turno de "+recibeTurno.getNombre());
 		if(jugador.getNombre().equals(recibeTurno.getNombre())){
 			if(carcel){
-				btnSalirDeLa.setVisible(true);
+				btnSalirDeLa.setEnabled(true);
 			}
 			else{
-				btnSalirDeLa.setVisible(false);
+				btnSalirDeLa.setEnabled(false);
 				btnTirarDado.setEnabled(true);
 			}
 		}
@@ -562,6 +563,7 @@ public class TableroIU {
 			btnTirarDado.setEnabled(false);
 		}
 	}
+	
 	
 	public void pagarMulta(JugadorDTO dueño ,int cantidad){
 		if(jugador.getNombre().equals(dueño.getNombre())){
@@ -578,7 +580,6 @@ public class TableroIU {
 		if(jugador.getNombre().equals(this.jugador.getNombre())){
 			this.jugador.setDinero(this.jugador.getDinero()-getPanel(posicion).getPrecio());
 		}
-		
 		mostrarDatos();
 		pasarTurno(jugador);
 	}
@@ -603,7 +604,7 @@ public class TableroIU {
 			}
 			
 			if(intento >= 3){
-				btnSalirDeLa.setVisible(false);
+				btnSalirDeLa.setEnabled(false);
 				btnNo.setEnabled(true);
 			}
 		}
@@ -632,7 +633,8 @@ public class TableroIU {
 				button.setEnabled(true);
 			}
 			if(acciones.contains("MULTA")){
-				this.jugador.setDinero(this.jugador.getDinero()-50);
+				this.jugador.setDinero(this.jugador.getDinero()-5000);
+				Comprobar(jugador);//agrege 2 ceros
 				
 				try {
 					server.pagarMulta(darDueño(posicion), 50);
@@ -658,21 +660,23 @@ public class TableroIU {
 					
 					switch (i) {
 					case 0:
-						jugador.setDinero(jugador.getDinero() + 50);
+						this.jugador.setDinero(this.jugador.getDinero() + 30);//recorte un cero
+						mostrarDatos();
 						break;
 					case 1:
-						jugador.setDinero(jugador.getDinero() + 400);
+						this.jugador.setDinero(this.jugador.getDinero() + 40);//
+						mostrarDatos();
 						break;	
 					case 2:
-						jugador.setDinero(jugador.getDinero() + 80);
+						this.jugador.setDinero(this.jugador.getDinero() + 8);//
+						mostrarDatos();
 						break;
 
 					default:
 						break;
 					}
-					lblInfo.setText("<html>"+suerte+"</html>");
-					
-				
+					lblInfo.setText("<html>"+suerte+"</html>");	
+					Comprobar(jugador);
 			}
 			if(acciones.contains("DESTINO")){
 				btnNo.setEnabled(true);
@@ -682,7 +686,8 @@ public class TableroIU {
 				
 				switch (i) {
 				case 0:
-					jugador.setDinero(jugador.getDinero() - 120);
+					this.jugador.setDinero(this.jugador.getDinero() -1200);//agrege cero
+					mostrarDatos();
 					break;
 				case 1:
 					carcel = true;
@@ -690,11 +695,13 @@ public class TableroIU {
 					updatePositions(0);			
 					break;	
 				case 2:
-					jugador.setDinero(jugador.getDinero() + 80);
+					this.jugador.setDinero(this.jugador.getDinero() - 1000);//
+					mostrarDatos();
 					break;
 					
 				case 3:
-					jugador.setDinero(jugador.getDinero() + 80);
+					this.jugador.setDinero(this.jugador.getDinero() - 2000);//
+					mostrarDatos();
 					break;
 
 				default:
@@ -702,6 +709,7 @@ public class TableroIU {
 				}
 				
 				lblInfo.setText("<html>"+destino+"</html>");
+				Comprobar(jugador);
 			}
 		}
 	}
@@ -740,22 +748,34 @@ public class TableroIU {
         
       private void Comprobar(JugadorDTO jugador)
       {
-    	  int dinero = jugador.getDinero();
-    	  if(dinero <= 0)
-    	  {  
-    		  for(int i = 0 ; i > 15 ; i++)
+    	  int dinero = this.jugador.getDinero();
+    	  ArrayList<JugadorDTO> bien = new ArrayList<JugadorDTO>();
+    	  if(this.jugador.getDinero() <=0)
+    	  {
+    		  this.jugador.setBancarrota(true);
+    		  
+    		  lblInfo.setText("Quedas en bancarrota, pierdes el juego");
+    		  button.setEnabled(false);
+    		  btnNo.setEnabled(false);
+    		  btnSalirDeLa.setEnabled(false);
+    		  btnTirarDado.setEnabled(false);
+    		  this.jugador.setPerdidas(this.jugador.getPerdidas() + 1);
+    		 //pasarTurno(this.jugador);
+    		  
+    	  }
+    	  else
+    	  {
+    		  for(JugadorDTO j : jugadores)
     		  {
-    			  if(getPanel(i).getDueño() == jugador)
+    			  if(j.isBancarrota() == false)
     			  {
-    				  getPanel(i).setDueño(null);
-    				  jugador.setDinero(dinero + getPanel(i).getPrecio());
-    				  dinero = jugador.getDinero();
+    				  bien.add(j);
     			  }
     		  }
     	  }
-    	  if(dinero <= 0)
+    	  if (bien.size() == 1)
     	  {
-    		  lblInfo.setText("Quedas en bancarrota, pierdes el juego");
+
     	  }
       }
 }

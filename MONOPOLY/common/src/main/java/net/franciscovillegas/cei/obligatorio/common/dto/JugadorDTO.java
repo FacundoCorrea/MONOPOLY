@@ -9,9 +9,16 @@ public class JugadorDTO implements Serializable {
 	private int dinero;
 	private int ganadas;
 	private int perdidas;
+	private boolean bancarrota = false;
 	
 	
 	
+	public boolean isBancarrota() {
+		return bancarrota;
+	}
+	public void setBancarrota(boolean bancarrota) {
+		this.bancarrota = bancarrota;
+	}
 	public int getDinero() {
 		return dinero;
 	}

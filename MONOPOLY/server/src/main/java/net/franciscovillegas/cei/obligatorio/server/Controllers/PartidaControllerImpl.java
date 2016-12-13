@@ -128,7 +128,6 @@ public class PartidaControllerImpl extends UnicastRemoteObject implements Partid
 
 	public void cambiarTurno(int jugPos) throws RemoteException {
 		List<JugadorDTO> jugadores = partida.getJugadoresEnJuego();
-		System.out.println("SIZE=" + jugadores.size());
 		int pos = jugPos+1;
 		
 		if(jugadores.size() <= pos){
